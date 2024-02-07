@@ -8,11 +8,11 @@ import { DxTreeViewComponent } from 'devextreme-angular';
 })
 export class MyComponentComponent {
 
-  
-  @ViewChild(DxTreeViewComponent, { static: false }) treeView:any;
+
+  @ViewChild(DxTreeViewComponent, { static: false }) treeView: any;
   treeDataSource: any;
 
-  treeBoxValue: string;
+  treeBoxValue: string | null;
 
   isTreeBoxOpened: boolean;
 
@@ -24,7 +24,7 @@ export class MyComponentComponent {
 
   gridColumns: any = ['CompanyName', 'City', 'Phone'];
 
-  constructor(private ref: ChangeDetectorRef){
+  constructor(private ref: ChangeDetectorRef) {
     this.treeDataSource = [
       {
         "ID": 1,
@@ -130,7 +130,7 @@ export class MyComponentComponent {
     this.isGridBoxOpened = false;
     this.treeBoxValue = '1_1';
   }
-  
+
   // makeAsyncDataSource(http, jsonFile) {
   //   return new CustomStore({
   //     loadMode: 'raw',
@@ -141,7 +141,7 @@ export class MyComponentComponent {
   //   });
   // }
 
-  syncTreeViewSelection(e:any) {
+  syncTreeViewSelection(e: any) {
     if (!this.treeView) return;
 
     if (!this.treeBoxValue) {
@@ -151,22 +151,48 @@ export class MyComponentComponent {
     }
   }
 
-  treeView_itemSelectionChanged(e:any) {
-    this.treeBoxValue = e.component.getSelectedNodeKeys();
+  treeView_itemSelectionChanged(e: any) {
+    // this.treeBoxValue = e.component.getSelectedNodeKeys();
+    // const selectedNodes = e.component.getSelectedNodes();
+    // if (selectedNodes.length > 0) {
+    //   const lastNode = selectedNodes[selectedNodes.length - 1];
+    //   this.treeBoxValue = lastNode.key;
+    // } else {
+    //   this.treeBoxValue = null; // No nodes selected
+    // }
+
+    // All Node 
+    // const selectedNodes = e.component.getSelectedNodes();
+    // if (selectedNodes.length > 0) {
+    //   const lastNode = selectedNodes[selectedNodes.length - 1];
+    //   this.treeBoxValue = lastNode.key;
+    // } else {
+    //   this.treeBoxValue = null; // No nodes selected
+    // }
+
+    const selectedNodes = e.component.getSelectedNodes();
+    if (selectedNodes.length > 0) {
+      const lastNode = selectedNodes[selectedNodes.length - 1];
+      if (!lastNode.children.length) { // Check if it's a leaf node
+        this.treeBoxValue = lastNode.key;
+      }
+    } else {
+      this.treeBoxValue = null; // No nodes selected
+    }
   }
 
-  gridBox_displayExpr(item:any) {
-    return item && `${item.CompanyName} <${item.Phone}>`;
+  gridBox_displayExpr(item: any) {
+    // return item && `${item.CompanyName} <${item.Phone}>`;
   }
 
-  onTreeBoxOptionChanged(e:any) {
+  onTreeBoxOptionChanged(e: any) {
     if (e.name === 'value') {
       this.isTreeBoxOpened = false;
       this.ref.detectChanges();
     }
   }
 
-  onGridBoxOptionChanged(e:any) {
+  onGridBoxOptionChanged(e: any) {
     if (e.name === 'value') {
       this.isGridBoxOpened = false;
       this.ref.detectChanges();

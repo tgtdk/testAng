@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { MyComponentComponent } from './my-component/my-component.component';
 import { DxDataGridModule, DxDropDownBoxModule, DxListModule, DxTreeViewComponent, DxTreeViewModule } from 'devextreme-angular';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     DxDropDownBoxModule,
     DxTreeViewModule,
     DxDataGridModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FormsModule
     
   ],
   providers: [],
