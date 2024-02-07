@@ -1,1 +1,35 @@
-<p>my-component works!</p>
+<div class="dx-fieldset">
+    <div class="dx-field">
+      <div class="dx-field-label">DropDownBox with embedded TreeView</div>
+      <div class="dx-field-value">
+        <dx-drop-down-box
+          [(value)]="treeBoxValue"
+          [inputAttr]="{ 'aria-label': 'Owner' }"
+          [(opened)]="isTreeBoxOpened"
+          valueExpr="ID"
+          displayExpr="name"
+          placeholder="Select a value..."
+          [showClearButton]="true"
+          [dataSource]="treeDataSource"
+          (onValueChanged)="syncTreeViewSelection($event)"
+          (onOptionChanged)="onTreeBoxOptionChanged($event)"
+        >
+          <div *dxTemplate="let data of 'content'">
+            <dx-tree-view
+              [dataSource]="treeDataSource"
+              dataStructure="plain"
+              keyExpr="ID"
+              parentIdExpr="categoryId"
+              selectionMode="single"
+              displayExpr="name"
+              [selectByClick]="true"
+              (onContentReady)="$event.component.selectItem(treeBoxValue)"
+              (onItemSelectionChanged)="treeView_itemSelectionChanged($event)"
+            >
+            </dx-tree-view>
+          </div>
+        </dx-drop-down-box>
+      </div>
+    </div>
+  </div>
+  
