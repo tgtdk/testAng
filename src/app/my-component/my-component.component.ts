@@ -170,6 +170,7 @@ export class MyComponentComponent {
     //   this.treeBoxValue = null; // No nodes selected
     // }
 
+    // leaf node
     const selectedNodes = e.component.getSelectedNodes();
     if (selectedNodes.length > 0) {
       const lastNode = selectedNodes[selectedNodes.length - 1];
