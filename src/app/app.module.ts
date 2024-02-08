@@ -7,12 +7,14 @@ import { MyComponentComponent } from './my-component/my-component.component';
 import { DxDataGridModule, DxDropDownBoxModule, DxListModule, DxTreeViewComponent, DxTreeViewModule } from 'devextreme-angular';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
+import { ApiHitComponent } from './api-hit/api-hit.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MyComponentComponent
+    MyComponentComponent,
+    ApiHitComponent
   ],
   imports: [
     BrowserModule,
