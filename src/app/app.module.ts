@@ -8,13 +8,15 @@ import { DxDataGridModule, DxDropDownBoxModule, DxListModule, DxTreeViewComponen
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { ApiHitComponent } from './api-hit/api-hit.component';
+import { TestComponentComponent } from './test-component/test-component.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MyComponentComponent,
-    ApiHitComponent
+    ApiHitComponent,
+    TestComponentComponent
   ],
   imports: [
     BrowserModule,
