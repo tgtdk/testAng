@@ -9,6 +9,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { ApiHitComponent } from './api-hit/api-hit.component';
 import { TestComponentComponent } from './test-component/test-component.component';
+import { CardComponentComponent } from './card-component/card-component.component';
+import { SwitchIconComponentComponent } from './switch-icon-component/switch-icon-component.component';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { TestComponentComponent } from './test-component/test-component.componen
     AppComponent,
     MyComponentComponent,
     ApiHitComponent,
-    TestComponentComponent
+    TestComponentComponent,
+    CardComponentComponent,
+    SwitchIconComponentComponent
   ],
   imports: [
     BrowserModule,
