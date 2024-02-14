@@ -12,6 +12,8 @@ import { ApiHitComponent } from './api-hit/api-hit.component';
 import { TestComponentComponent } from './test-component/test-component.component';
 import { CardComponentComponent } from './card-component/card-component.component';
 import { SwitchIconComponentComponent } from './switch-icon-component/switch-icon-component.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
 
 
 @NgModule({
@@ -32,7 +34,8 @@ import { SwitchIconComponentComponent } from './switch-icon-component/switch-ico
     FlexLayoutModule,
     FormsModule,
     DxSwitchModule,
-    MatCardModule
+    MatCardModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

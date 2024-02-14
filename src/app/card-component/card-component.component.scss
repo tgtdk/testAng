@@ -1,37 +1,17 @@
     .card {
-        // flex: 1 1 30%; /* Adjust this value based on your layout */
-        // margin: 10px;
-        // padding: 10px;
         border: 1px solid #ccc;
     }
-    
-    // @media (max-width: 1024px) {
-    //     .card {
-    //     flex: 1 1 45%; /* Adjust this value for tablet layout */
-    //     }
-    // }
-    
-    // @media (max-width: 768px) {
-    //     .card {
-    //     flex: 1 1 100%; /* Full width for mobile layout */
-    //     }
-    // }
-    // .container {
-    //     position: relative;
-    // }
-
-    // /* Custom styling for dxSwitch */
-    // .dx-switch {
-    //     border-radius: 20px; /* Adjust the border-radius to make it more circular */
-    //     background-color: #e0e0e0; /* Background color */
-    //     padding: 2px; /* Add some padding to make the switch more visible */
-    // }
-    
-    // .dx-switch .dx-switch-inner {
-    //     border-radius: 50%; /* Make the inner circle of the switch circular */
-    // }
-    
-    // .dx-switch .dx-switch-handle {
-    //     border-radius: 50%; /* Make the handle of the switch circular */
-    // }
-    
+    .card {
+        border-radius: 8px;
+        border: 1px solid #e0e0e0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+      
+      .price {
+        margin-top: 10px;
+        font-weight: bold;
+      }
+      
+      /* Add more styling as needed */
+      

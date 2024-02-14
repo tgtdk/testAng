@@ -10,8 +10,7 @@ export class CardComponentComponent {
   hintMessage = "For Show Price"
   cards = [
     { heading: 'Card 1', price: 5000 },
-    { heading: 'Card 2', price: 5000 },
-    { heading: 'Card 3', price: 5000 }
+    { heading: 'Card 2', price: 700 },
+    { heading: 'Card 3', price: 3000 }
   ];
-  
   }
