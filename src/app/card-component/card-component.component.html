@@ -1,21 +1,25 @@
-<div fxLayout="column" fxLayoutAlign="end">
+<div fxLayout="column">
     <div fxLayout="row" fxFlex="calc(100%)" fxLayoutAlign="end" style="margin: 10px 10px 10px;" >
         <dx-switch [(value)]="hiddenPriceToggle" switchedOnText="Show Prices" switchedOffText="Hide Prices" [hint]="hintMessage"></dx-switch>
     </div>
-    <div class="card-row" fxLayout="row wrap" fxFlex="calc(100%)" fxLayoutGap="20px">
-      <mat-card *ngFor="let card of cards" class="card laptop" fxFlex="calc(33.33% -20px)" fxFlex.lt-md="calc(50.00% -20px)" fxFlex.xs="100%" >
-        <mat-card-header>
-          <mat-card-title><h2>{{ card.heading }}</h2></mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <form>
-            <label for="inputField">Input Field:</label>
-            <input type="text" id="inputField" name="inputField">
-            <button type="submit">Submit</button>
-          </form>
-          <p *ngIf="!hiddenPriceToggle">Price: {{ card.price }}</p>
-        </mat-card-content>
-      </mat-card>
+    <div class="card-row" fxLayout="row wrap" fxFlex="calc(100%)" fxLayoutGap="20px grid">
+
+        <div *ngFor="let card of cards" fxFlex="calc(33.33% -20px)" fxFlex.lt-md="calc(50.00% -20px)" fxFlex.xs="100%" >
+            <mat-card class="card" >
+                <mat-card-header>
+                  <mat-card-title><h2>{{ card.heading }}</h2></mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                  <form>
+                    <label for="inputField">Input Field:</label>
+                    <input type="text" id="inputField" name="inputField">
+                    <button type="submit">Submit</button>
+                  </form>
+                  <p *ngIf="!hiddenPriceToggle">Price: {{ card.price }}</p>
+                </mat-card-content>
+              </mat-card>
+        </div>
+     
     </div>
   </div>
   
