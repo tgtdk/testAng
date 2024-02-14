@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { MatCardModule } from '@angular/material/card';
+import { DxSwitchModule } from 'devextreme-angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MyComponentComponent } from './my-component/my-component.component';
@@ -29,8 +30,9 @@ import { SwitchIconComponentComponent } from './switch-icon-component/switch-ico
     DxTreeViewModule,
     DxDataGridModule,
     FlexLayoutModule,
-    FormsModule
-    
+    FormsModule,
+    DxSwitchModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
