@@ -13,6 +13,9 @@ import { TestComponentComponent } from './test-component/test-component.componen
 import { CardComponentComponent } from './card-component/card-component.component';
 import { SwitchIconComponentComponent } from './switch-icon-component/switch-icon-component.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { FlexBoxComponent } from './flex-box/flex-box.component';
+import {MatDialogModule } from '@angular/material/dialog';
+import { DialgBoxComponent } from './dialg-box/dialg-box.component';
 
 
 
@@ -23,7 +26,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     ApiHitComponent,
     TestComponentComponent,
     CardComponentComponent,
-    SwitchIconComponentComponent
+    SwitchIconComponentComponent,
+    FlexBoxComponent,
+    DialgBoxComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +40,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     FormsModule,
     DxSwitchModule,
     MatCardModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

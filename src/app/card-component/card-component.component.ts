@@ -28,4 +28,11 @@ export class CardComponentComponent {
     { heading: 'Card 2', price: 700 },
     { heading: 'Card 3', price: 3000 }
   ];
-  }
+
+  cardsData = [
+    { title: 'Card 1', content: 'Content for Card 1' },
+    { title: 'Card 2', content: 'Content for Card 2' },
+    { title: 'Card 20', content: 'Content for Card 20' }
+  ];
+
+}
