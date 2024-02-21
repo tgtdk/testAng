@@ -1,9 +1,9 @@
 <h2 mat-dialog-title>Dialog Title</h2>
-<mat-dialog-content>
+<mat-dialog-content fxLayout="row wrap" style="overflow-x: hidden;">
   <!-- fxLayoutGap="10px grid" -->
   <!--  style="margin-right:-25px;"  -->
-  <form>
-  <div fxLayout="row wrap" class="RowContainer" fxLayoutGap="25px grid">
+  <form fxLayout="row wrap" fxFlex="100">
+  <div fxLayout="row wrap" class="RowContainer" fxLayoutGap="25px grid" style="margin-right:-25px;">
     <div *ngFor="let card of cardsData; let i = index" fxFlex="33.33" fxFlex.lt-md="50" fxFlex.xs="100">
       <mat-card>
         <mat-card-header>
