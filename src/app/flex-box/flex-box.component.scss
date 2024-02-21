@@ -1,0 +1,60 @@
+
+.BigContainer{
+    display: flex;
+    justify-content: space-around;
+}
+.flex-container-row,
+.flex-container-column {
+    display: flex;
+    background-color: yellow;
+}
+
+// Row : width auto 
+//       height full outer div 
+.flex-container-row {
+    display: flex;
+    flex-wrap: wrap;
+    // means in same row for children only 
+    width: 400px;
+    height: 500px;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+}
+
+// Column : heigth :auto 
+//          width full of parent container
+.flex-container-column {
+    flex-direction: column;
+    // means in same row
+    height: 400px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 500px;
+    overflow: auto;
+}
+
+// children 
+.flex-container-row>div,
+.flex-container-column>div, 
+.RowContainer > div {
+    background-color: blue;
+    height: 100px;
+    width: 100px;
+    margin: 10px;
+    color: white;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+}
+
+
+.RowContainer {
+    height: inherit; /* Inherit height from parent */
+    overflow-y: auto; /* Adds vertical scrollbar when content exceeds parent's height */
+    display: flex; /* Use flexbox for layout */
+    flex-wrap: wrap; /* Allow items to wrap to next row */
+    background-color: yellow;
+}
+

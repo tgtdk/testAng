@@ -1,18 +1,22 @@
 <h2 mat-dialog-title>Dialog Title</h2>
-<mat-dialog-content fxLayout="row wrap">
-  <ng-container *ngFor="let card of cardsData; let i = index">
-    <mat-card fxFlex.gt-sm="calc(33.33% - 10px)" fxFlex.gt-xs="calc(50% - 10px)" fxFlex.xs="calc(100% - 10px)" class="card">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{card.title}}</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        {{card.content}}
-      </mat-card-content>
-    </mat-card>
-    <div *ngIf="(i + 1) % 3 !== 0" style="width: 10px;"></div> <!-- horizontal gap -->
-    <div *ngIf="(i + 1) % 3 === 0" style="height: 10px; width: 100%;"></div> <!-- vertical gap -->
-  </ng-container>
+<mat-dialog-content>
+  <!-- fxLayoutGap="10px grid" -->
+  <!--  style="margin-right:-25px;"  -->
+  <form>
+  <div fxLayout="row wrap" class="RowContainer" fxLayoutGap="25px grid">
+    <div *ngFor="let card of cardsData; let i = index" fxFlex="33.33" fxFlex.lt-md="50" fxFlex.xs="100">
+      <mat-card>
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{card.title}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          {{card.content}}
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</form>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-button mat-dialog-close>Close</button>
