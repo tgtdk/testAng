@@ -1,0 +1,23 @@
+#printContent{
+    display: none;
+}
+
+body{
+    background-color: red;
+}
+
+@media print {
+    /* All your print styles go here */
+    #header,
+    #footer,
+    #nav {
+      display: none !important;
+    }
+    @page{
+        margin: 0px;
+    }
+
+    #printContent{
+        display: block;
+    }
+  }
