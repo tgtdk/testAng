@@ -25,32 +25,55 @@ export class ServerSidePaginComponent {
     this.dataSource = new CustomStore({
       key: 'OrderNumber',
       load: (loadOptions: LoadOptions) => {
-        const paramNames = [
-          'skip', 'take', 'requireTotalCount', 'requireGroupCount',
-          'sort', 'filter', 'totalSummary', 'group', 'groupSummary',
-        ];
 
-        let params = new HttpParams();
 
-        paramNames
-          .filter((paramName) => (loadOptions as any)[paramName])
-          .forEach((paramName) => {
-            params = params.set(paramName, JSON.stringify((loadOptions as any)[paramName]));
+        // Check if pagination options are provided
+        if (loadOptions.skip !== undefined && loadOptions.take !== undefined && (loadOptions.sort === undefined || !Array.isArray(loadOptions.sort)))
+ {
+          // Call custom pagination logic
+          // return this.loadPaginatedData(options);
+
+
+          alert("Api call here")
+          console.log(loadOptions['skip']);
+          console.log(loadOptions['take']);
+          console.log(loadOptions['sort']);
+          console.log(loadOptions['filter']);
+          const paramNames = [
+            'skip', 'take', 'requireTotalCount', 'requireGroupCount',
+            'sort', 'filter', 'totalSummary', 'group', 'groupSummary',
+          ];
+
+          let params = new HttpParams();
+
+          paramNames
+            .filter((paramName) => (loadOptions as any)[paramName])
+            .forEach((paramName) => {
+              params = params.set(paramName, JSON.stringify((loadOptions as any)[paramName]));
+            });
+
+          // Use 'heroService' property here
+          let obs = this.heroService.getMockData();
+
+          return new Promise<LoadResult<any>>((resolve, reject) => {
+            obs.subscribe(
+              (result: LoadResult<any> | PromiseLike<LoadResult<any>>) => {
+                resolve(result);
+              },
+              (error) => {
+                reject(error);
+              }
+            );
           });
 
-        // Use 'heroService' property here
-        let obs = this.heroService.getMockData();
+        } else {
+          alert("Not custom logic")
+          // For non-pagination requests (e.g., sorting, searching, downloading), use default load method
+          return CustomStore.prototype.load.call(this, loadOptions);
+          // return new Promise((resolve) => resolve([]));
 
-        return new Promise<LoadResult<any>>((resolve, reject) => {
-          obs.subscribe(
-            (result: LoadResult<any> | PromiseLike<LoadResult<any>>) => {
-              resolve(result);
-            },
-            (error) => {
-              reject(error);
-            }
-          );
-        });
+        }
+
       },
     });
   }
