@@ -24,7 +24,7 @@ import { Comp3Component } from './Subject/comp3/comp3.component';
 import { MatInputModule } from '@angular/material/input';
 import { ServerSidePaginComponent } from './server-side-pagin/server-side-pagin.component';
 import { HttpClientModule } from '@angular/common/http';
-import { PrintComponentRandDComponent } from './Subject/print-component-rand-d/print-component-rand-d.component';
+import { PrintComponentRandDComponent } from './print-component-rand-d/print-component-rand-d.component';
 
 
 
