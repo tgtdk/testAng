@@ -67,7 +67,6 @@ export class ServerSidePaginComponent {
           });
 
         } else {
-          alert("Not custom logic")
           // For non-pagination requests (e.g., sorting, searching, downloading), use default load method
           return CustomStore.prototype.load.call(this, loadOptions);
           // return new Promise((resolve) => resolve([]));
