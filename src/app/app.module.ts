@@ -17,7 +17,7 @@ import { FlexBoxComponent } from './flex-box/flex-box.component';
 import {MatDialogModule } from '@angular/material/dialog';
 import {MatIconModule } from '@angular/material/icon';
 import { DialgBoxComponent } from './dialg-box/dialg-box.component';
-import { HeaderComponent } from './flex-box/header/header.component';
+import { HeaderComponent } from './header/header.component';
 import { LearnSubjectComponent } from './Subject/learn-subject/learn-subject.component';
 import { Comp2Component } from './Subject/comp2/comp2.component';
 import { Comp3Component } from './Subject/comp3/comp3.component';

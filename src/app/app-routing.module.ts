@@ -5,6 +5,7 @@ import { CardComponentComponent } from './card-component/card-component.componen
 import { FlexBoxComponent } from './flex-box/flex-box.component';
 import { LearnSubjectComponent } from './Subject/learn-subject/learn-subject.component';
 import { ServerSidePaginComponent } from './server-side-pagin/server-side-pagin.component';
+import { PrintComponentRandDComponent } from './print-component-rand-d/print-component-rand-d.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: "server-side-paging",
     component: ServerSidePaginComponent
+  },
+  {
+    path: "print-component",
+    component: PrintComponentRandDComponent
   }
 ];
 
