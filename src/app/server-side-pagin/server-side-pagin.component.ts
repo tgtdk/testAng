@@ -33,8 +33,6 @@ export class ServerSidePaginComponent {
           // Call custom pagination logic
           // return this.loadPaginatedData(options);
 
-
-          alert("Api call here")
           console.log(loadOptions['skip']);
           console.log(loadOptions['take']);
           console.log(loadOptions['sort']);
