@@ -2,9 +2,11 @@
 <button id="print_external" ><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="print"></mat-icon></button>
 
 
-<div id="printContent">
+<div id="printContent" #contentContainer>
     <!-- <app-card-component></app-card-component> -->
-    <app-learn-subject></app-learn-subject>
+    <app-learn-subject [initialValue]="parentInputValue"></app-learn-subject>
+    
 </div>
 
-<input type="text">
+
+<app-learn-subject [initialValue]="parentInputValue"></app-learn-subject>

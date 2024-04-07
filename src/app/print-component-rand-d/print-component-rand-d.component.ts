@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, ComponentFactoryResolver, ElementRef, OnInit, Renderer2, ViewChild, ViewContainerRef } from '@angular/core';
+import { LearnSubjectComponent } from '../Subject/learn-subject/learn-subject.component';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 @Component({
   selector: 'app-print-component-rand-d',
@@ -8,10 +10,18 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 })
 export class PrintComponentRandDComponent implements OnInit {
 
+  @ViewChild(LearnSubjectComponent) printableContent: LearnSubjectComponent | undefined;
+
+  @ViewChild('contentContainer', { read: ViewContainerRef }) contentContainer!: ViewContainerRef;
+
+
+
   styleSheewtString: any;
   domContent: any;
+  parentInputValue: string = '52222';
 
-  constructor(private http: HttpClient, private renderer: Renderer2) {
+
+  constructor(private http: HttpClient, private renderer: Renderer2, private elementRef: ElementRef, private resolver: ComponentFactoryResolver) {
 
   }
 
@@ -42,7 +52,16 @@ export class PrintComponentRandDComponent implements OnInit {
 
   printPage = () => {
 
-    var innerContents = document.getElementById('printContent')?.innerHTML;
+    var innerContents = (document.getElementById('printContent')?.cloneNode(true) as HTMLElement).innerHTML;
+    // var innerContents = (document.querySelector('app-learn-subject')?.cloneNode(true)as HTMLElement).innerHTML;
+
+    // const inputValue = this.printableContent?.inputValue;
+
+    // alert(innerContents);
+    // alert(this.parentInputValue);
+    // console.log(innerContents);
+    // return;
+    // var innerContents = this.elementRef.nativeElement.querySelector('app-learn-subject').outerHTML;
     var innerContentsCss = this.styleSheewtString;
     console.log("innerContentsCss");
     console.log(innerContentsCss);
@@ -67,17 +86,51 @@ export class PrintComponentRandDComponent implements OnInit {
 
     var popupWinindow = window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
 
-    popupWinindow?.document.open();
-    popupWinindow?.document.write(`<html><head>
-    <style>` +
-    innerContentsCss +
-    `</style>
 
-    </head><body>` + innerContents + '</html>');
+    // const newDocument = popupWinindow?.document;
+    // const newAppRoot = newDocument?.createElement('app-new-window') as Node;
+    // (newDocument?.body as HTMLElement).appendChild(newAppRoot);
+
+    // platformBrowserDynamic()
+    //   .bootstrapModule(NewWindowModule)
+    //   .catch(err => console.error(err));
 
     this.copyStyles(popupWinindow as Window);
-    popupWinindow?.print();
-    popupWinindow?.document.close();
+    const factory = this.resolver.resolveComponentFactory(LearnSubjectComponent);
+    const componentRef = this.contentContainer.createComponent(factory);
+    
+    popupWinindow?.document.body.appendChild(componentRef.location.nativeElement);
+    
+    setTimeout(()=>{
+      popupWinindow?.print()
+    }, 2000)
+
+
+
+    // check 
+    // const checkInitialized = () => {
+    //   if (componentRef.instance.isInitialized()) {
+    //     popupWinindow?.print(); // Print the content
+    //   } else {
+    //     setTimeout(checkInitialized, 100); // Check again after 100ms
+    //   }
+    // };
+    // setTimeout(checkInitialized, 100);
+
+    // popupWinindow?.document.open();
+    // popupWinindow?.document.write(`<html><head>
+    // <style>` +
+    //   innerContentsCss +
+    //   `</style>
+
+    // </head><body>` + innerContents + '</html>');
+
+    // (popupWinindow?.document.body as HTMLElement).innerHTML =  `<app-learn-subject [initialValue]="parentInputValue"></app-learn-subject>`    ;
+
+
+
+
+    // popupWinindow?.document.close();
     // this.finalPrint();
 
 
