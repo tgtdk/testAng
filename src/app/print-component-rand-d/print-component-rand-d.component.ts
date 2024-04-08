@@ -84,7 +84,6 @@ export class PrintComponentRandDComponent implements OnInit {
     // }, 0)
 
 
-    var popupWinindow = window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
 
 
     // const newDocument = popupWinindow?.document;
@@ -95,15 +94,19 @@ export class PrintComponentRandDComponent implements OnInit {
     //   .bootstrapModule(NewWindowModule)
     //   .catch(err => console.error(err));
 
-    this.copyStyles(popupWinindow as Window);
     const factory = this.resolver.resolveComponentFactory(LearnSubjectComponent);
     const componentRef = this.contentContainer.createComponent(factory);
-    
-    popupWinindow?.document.body.appendChild(componentRef.location.nativeElement);
-    
-    setTimeout(()=>{
-      popupWinindow?.print()
-    }, 2000)
+    componentRef.instance.initialValue = 'dynamicValue';
+
+    setTimeout(() => {
+      var popupWinindow = window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
+      this.copyStyles(popupWinindow as Window);
+      setTimeout(() => {
+        popupWinindow?.document.body.appendChild(componentRef.location.nativeElement);
+
+        popupWinindow?.print()
+      }, 2000)
+    }, 0)
 
 
 
