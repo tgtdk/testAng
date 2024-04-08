@@ -11,14 +11,14 @@ export class LearnSubjectComponent implements OnInit, AfterViewInit {
   @Input() initialValue: string ='';
   inputValue: string = '';
   constructor(private heroService: HeroService, private elRef: ElementRef){
-    alert('on constructor called');
+    
     // this.heroService.userName.subscribe((res) =>{
     //   this.userName = res;
     // })
   }
   ngOnInit(): void {
-    alert('on init called')
-    alert(this.initialValue)
+    
+    
     this.inputValue = this.initialValue;
     // this.inputValue = this.elRef.nativeElement.querySelector('input').value;
 
@@ -26,7 +26,7 @@ export class LearnSubjectComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    alert('on After learn subject view Init called')
+    
     // window.print();
   }
 }
