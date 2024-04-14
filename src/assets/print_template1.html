@@ -1,8 +1,15 @@
+<style>
+    * {
+        background-color: yellow;
+    }
+</style>
+
 <div class="print-header" style="background-color: green;">
-    <span class="company-name">Your New Company Name</span> 
+    <span class="company-name">Your New Company Name</span>
     <span class="page-number">Page {{ pageNumber }}</span>
-  </div>
-<div fxLayout="row wrap" fxLayoutAlign="center center" class="print-content page-break" style="background-color: yellow;">
+</div>
+<div fxLayout="row wrap" fxLayoutAlign="center center" class="print-content page-break"
+    style="background-color: yellow;">
     <input type="text" [value]="inputValue">
     <div fxFlex="100" fxLayout="column" fxLayoutAlign="start center">
         <h1>Name: {{userName}}</h1>
