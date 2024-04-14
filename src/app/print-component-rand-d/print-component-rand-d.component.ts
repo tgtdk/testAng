@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, ComponentFactoryResolver, ElementRef, OnInit, Renderer2, ViewChild, ViewContainerRef } from '@angular/core';
+import { ChangeDetectorRef, Component, ComponentFactoryResolver, ElementRef, OnInit, Renderer2, ViewChild, ViewContainerRef } from '@angular/core';
 import { LearnSubjectComponent } from '../Subject/learn-subject/learn-subject.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
@@ -19,9 +19,18 @@ export class PrintComponentRandDComponent implements OnInit {
   styleSheewtString: any;
   domContent: any;
   parentInputValue: string = '52222';
+  templateName = 'template1'; // Initial template name
 
 
-  constructor(private http: HttpClient, private renderer: Renderer2, private elementRef: ElementRef, private resolver: ComponentFactoryResolver) {
+  // Set Time Out Other Option Start
+  isButtonHidden:boolean = true;
+
+  //2nd approch
+  @ViewChild('enabledButton') enabledButton!: ElementRef;
+  // Set Time Out Other Option End
+
+
+  constructor(private http: HttpClient, private renderer: Renderer2, private elementRef: ElementRef, private resolver: ComponentFactoryResolver, private cdr: ChangeDetectorRef) {
 
   }
 
@@ -39,15 +48,22 @@ export class PrintComponentRandDComponent implements OnInit {
       // this.http.get('print-component-rand-d.component.scss', {responseType: 'text'}).subscribe(
       styleSheet => {
         this.styleSheewtString = styleSheet;
-        // alert("styleSheet");  
-        // alert(styleSheet);  
-        // alert(this.styleSheewtString);  
+        // 
+        // 
+        // 
 
         console.log("this.styleSheewtString");
         console.log(this.styleSheewtString);
       }
     )
 
+  }
+
+
+  changeTemplate() {
+    this.templateName = this.templateName === 'template1' ? 'template2' : 'template1';
+    console.log(this.templateName)
+    
   }
 
   printPage = () => {
@@ -57,8 +73,8 @@ export class PrintComponentRandDComponent implements OnInit {
 
     // const inputValue = this.printableContent?.inputValue;
 
-    // alert(innerContents);
-    // alert(this.parentInputValue);
+    // 
+    // 
     // console.log(innerContents);
     // return;
     // var innerContents = this.elementRef.nativeElement.querySelector('app-learn-subject').outerHTML;
@@ -101,8 +117,78 @@ export class PrintComponentRandDComponent implements OnInit {
     setTimeout(() => {
       var popupWinindow = window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
       this.copyStyles(popupWinindow as Window);
+
+
+
+
       setTimeout(() => {
         popupWinindow?.document.body.appendChild(componentRef.location.nativeElement);
+
+        const newStyleElement = popupWinindow?.document.createElement('style');
+        newStyleElement?.appendChild(popupWinindow?.document.createTextNode(`
+        
+        
+@media print {
+  /* All your print styles go here */
+  
+  @page{
+      size: A4;
+      margin: 0px ;
+  }
+
+  #printContent{
+      display: block;
+  }
+
+
+  .print-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px; /* Set the height of the header */
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    font-weight: bold;
+
+  }
+
+  .print-header .company-name {
+    position: absolute;
+    left: 10px; /* Adjust the position as needed */
+  }
+
+  .print-header .heading {
+    font-size: 18px;
+    flex: 1; /* Allow heading to grow and push page number to the right */
+    text-align: center;
+  }
+
+  .print-header .page-number {
+    position: absolute;
+    right: 10px; /* Adjust the position as needed */
+    font-size: 14px;
+    margin: 0 10px;
+  }
+
+  .page-break {
+    page-break-after: always;
+  }
+  .print-content {
+    margin-top: 70px; /* Adjust the top margin to account for the header height */
+  } 
+  .print-content-after-page-break {
+    margin-top: 70px; /* Adjust the top margin to account for the header height */
+}
+
+
+}
+        `) as Node);
+
+        popupWinindow?.document.head.appendChild(newStyleElement as Node);
 
         popupWinindow?.print()
       }, 2000)
@@ -161,4 +247,48 @@ export class PrintComponentRandDComponent implements OnInit {
     });
   }
 
+
+  // Set Time Out Other Option Start
+  disableHidden(){
+    this.isButtonHidden = false;
+    // its working finally
+
+    let tempHtml = document.getElementsByClassName('btnClass')[0].outerHTML;
+    let FinalHtml = '';
+    document.getElementsByClassName('btnClass')[0].outerHTML = document.getElementsByClassName('btnClass')[0].outerHTML.replace('#Hi#', 'Dhruvil');
+
+    FinalHtml += document.getElementsByClassName('btnClass')[0].outerHTML;
+
+    this.cdr.detectChanges();
+    // setTimeout(()=>{
+      console.log(document.getElementsByClassName('btnClass')[0].outerHTML);
+    // })
+    console.log(this.enabledButton.nativeElement.outerHTML);
+
+
+    document.getElementsByClassName('btnClass')[0].outerHTML = tempHtml;
+    this.cdr.detectChanges();
+
+    this.isButtonHidden = true;
+    // its working finally
+
+    document.getElementsByClassName('btnClass')[0].outerHTML = document.getElementsByClassName('btnClass')[0].outerHTML.replace('#Hi#', 'Amol');
+    FinalHtml += document.getElementsByClassName('btnClass')[0].outerHTML;
+
+    this.cdr.detectChanges();
+    // setTimeout(()=>{
+      console.log(document.getElementsByClassName('btnClass')[0].outerHTML);
+    // })
+    console.log(this.enabledButton.nativeElement.outerHTML);
+
+    console.log(FinalHtml);
+    document.getElementsByClassName('btnClass')[0].outerHTML = FinalHtml;
+    
+
+  }
+
+  getHtmlOnly(){
+    console.log(document.getElementsByClassName('btnClass')[0].outerHTML);
+  }
+  // Set Time Out Other Option End
 }

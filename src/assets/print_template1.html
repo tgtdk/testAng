@@ -1,0 +1,16 @@
+<div class="print-header" style="background-color: green;">
+    <span class="company-name">Your New Company Name</span> 
+    <span class="page-number">Page {{ pageNumber }}</span>
+  </div>
+<div fxLayout="row wrap" fxLayoutAlign="center center" class="print-content page-break" style="background-color: yellow;">
+    <input type="text" [value]="inputValue">
+    <div fxFlex="100" fxLayout="column" fxLayoutAlign="start center">
+        <h1>Name: {{userName}}</h1>
+        <p>here observable subscribe</p>
+    </div>
+    <div fxLayout="row wrap" fxLayoutGap="15px grid" style="width: 95vw;">
+        <div fxFlex="50">
+            <ng-container #dynamicComponentContainer></ng-container>
+        </div>
+    </div>
+</div>

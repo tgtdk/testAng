@@ -1,3 +1,7 @@
+<app-learn-subject [templateName]="templateName"></app-learn-subject>
+<button (click)="changeTemplate()">Change Template</button>
+
+
 <p>print-component-rand-d works!</p>
 <button id="print_external"><mat-icon aria-hidden="false" aria-label="Example home icon"
         fontIcon="print"></mat-icon></button>
@@ -8,3 +12,13 @@
 
     </div>
 </div>
+
+
+<!-- Set Time Out Other Option Start -->
+<div class="btnClass">
+   <h1 style="background-color: antiquewhite; color: blue; text-align: center;">#Hi#</h1>
+    <button [hidden]="isButtonHidden"  #enabledButton>Hello</button>
+</div>
+<button (click)="disableHidden()">Click Here</button>
+<button (click)="getHtmlOnly()">get html</button>
+<!-- Set Time Out Other Option End -->

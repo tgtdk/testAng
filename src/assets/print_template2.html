@@ -1,0 +1,19 @@
+<div class="print-header" style="background-color: green;">
+    <span class="company-name">Your Company Name</span> 
+    <span class="page-number">Page {{ pageNumber }}</span>
+  </div>
+<div fxLayout="row wrap" fxLayoutAlign="center center" class="print-content page-break" style="background-color: yellow;">
+    <input type="text" [value]="inputValue">
+    <div fxFlex="100" fxLayout="column" fxLayoutAlign="start center">
+        <h1>Name: {{userName}}</h1>
+        <p>here observable subscribe</p>
+    </div>
+    <div fxLayout="row wrap" fxLayoutGap="15px grid" style="width: 95vw;">
+        <div fxFlex="50">
+            <app-comp2></app-comp2>
+        </div>
+        <div fxFlex="50">
+            <app-comp3></app-comp3>
+        </div>
+    </div>
+</div>
